@@ -5,6 +5,6 @@ COPY ./build /usr/src/app
 WORKDIR /usr/src/app
 
 # Install Node.js dependencies
-RUN npm install --production --silent
+RUN npm install 
 
 CMD [ "node", "server.js" ]
