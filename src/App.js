@@ -3,7 +3,7 @@ import './App.less';
 
 const Header = ({logoUrl, items}) => {
   const renderItem = (item) => {
-    return <span key={item.key} role='item'>{item.title}</span>;
+    return <span key={item.key} data-role='item'>{item.title}</span>;
   };
   return (
     <header className='Header'>
@@ -33,12 +33,11 @@ class App extends Component {
   banner = () => {
     const props = {
       src: '/imgs/banner1.png',
-      alt: 'banner',
       style: {
         width: '100%'
       }
     };
-    return <div><img {...props} /></div>;
+    return <div><img {...props} alt='banner' /></div>;
   };
 
   about = () => {
@@ -61,7 +60,7 @@ class App extends Component {
       );
     };
     return (
-      <div role='about'>
+      <div data-role='about'>
         <div>
           <h1>关于我们</h1>
           <p>深圳市云恋科技有限公司是基于IT供应链平台的供应链综合服务商，核心产品为ePLD智能供应链平台。近15年的经验积累，为全球超过5000家涉及零售、食品、家居、医药、服装、电子以及供应链3PL等不同行业的客户，提供高效稳定并能创造价值的解决方案。</p>
@@ -91,7 +90,7 @@ class App extends Component {
       );
     };
     return (
-      <div role='business'>
+      <div data-role='business'>
         <div>
           <h1>业务模块</h1>
           <div>{items.map(renderItem)}</div>
@@ -115,7 +114,7 @@ class App extends Component {
       );
     };
     return (
-      <div role='advantage'>
+      <div data-role='advantage'>
         <div>
           <h1>我们的优势</h1>
           <div>{items.map(renderItem)}</div>
@@ -134,13 +133,13 @@ class App extends Component {
       return (
         <div key={index} style={{backgroundImage: `url(${item.bgUrl})`}}>
           <div><img src={item.url} alt='logo'/></div>
-          <div><i /></div>
+          <div style={{lineHeight: 0}}><i /></div>
           <div>{item.title}</div>
         </div>
       );
     };
     return (
-      <div role='case1'>
+      <div data-role='case1'>
         <div>
           <h1>精选行业案例</h1>
           <h2>为众多行业、领域提供基于IT供应链平台的供应链综合服务</h2>
@@ -151,11 +150,74 @@ class App extends Component {
   };
 
   case2 = () => {
-
+    const items = (new Array(12)).fill(0).map((item, index) => `/imgs/case2_logo${index + 1}.png`);
+    const renderItem = (item, index) => {
+      return (
+        <div key={index}>
+          <img src={item} alt='logo'/>
+        </div>
+      );
+    };
+    return (
+      <div data-role='case2'>
+        <div>
+          <h1>更多成功案例</h1>
+          <div>{items.map(renderItem)}</div>
+        </div>
+      </div>
+    );
   };
 
   footer = () => {
+    return (
+      <footer>
+        <div>
+          <div>
+            <div><img src='/imgs/footer_logo.png' alt='logo'/></div>
+            <div>深圳市云恋科技有限公司</div>
+          </div>
+          <div>
+            <div>地址：深圳市福田保税区黄槐道3号深福保科技工业园B栋301F单元</div>
+            <div>联系电话：+8675583580000</div>
+            <div>传真：+8675523807500</div>
+          </div>
+          <div>
+            <img src='/imgs/footer_2d_code.png' alt='2d code'/>
+            <div>
+              <div>扫一扫关注云恋科技</div>
+              <div>更多详情</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  };
 
+  extra = () => {
+    return (
+      <div data-role='extra'>
+        <div>
+          <img src='/imgs/extra_phone.png' alt='phone'/>
+          <div style={{display: 'none'}}>
+            <div>联系电话：</div>
+            <div>+8675583580000</div>
+            <div>传真：</div>
+            <div>+8675523807500</div>
+          </div>
+        </div>
+        <div>
+          <img src='/imgs/extra_2dcode.png' alt='2dcode'/>
+          <div style={{display: 'none'}}>
+            <div><img src='/imgs/footer_2d_code.png' alt='2dcode'/></div>
+            <div>扫一扫关注云恋科技</div>
+            <div>更多详情</div>
+          </div>
+        </div>
+        <div onClick={() => window.scrollTo(0,0)}>
+          <img src='/imgs/extra_top.png' alt='top'/>
+        </div>
+      </div>
+    );
   };
 
   render() {
@@ -169,6 +231,7 @@ class App extends Component {
         {this.case1()}
         {this.case2()}
         {this.footer()}
+        {this.extra()}
       </div>
     );
   }
