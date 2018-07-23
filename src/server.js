@@ -10,15 +10,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', function(req, res) {
-  console.log(req.path);
-  if (req.path === '/' || req.path === 'index') {
-    res.sendFile(__dirname + '/index.html');
-  } else {
-    res.sendFile(__dirname + req.path);
-  }
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
