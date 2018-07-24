@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.less';
 
 const imageUrl = (title) => {
@@ -268,6 +269,17 @@ class App extends Component {
       </div>
     );
   };
+
+  componentDidMount() {
+    // 对于不支持黏性布局的浏览器做兼容处理
+    const header = ReactDOM.findDOMNode(this).firstChild;
+    if (window.getComputedStyle(header).position === 'static') {
+      header.style.position = 'relative';
+      window.onscroll = () => {
+        header.style.transform = `translateY(${document.body.scrollTop}px)`;
+      }
+    }
+  }
 
   render() {
     return (
