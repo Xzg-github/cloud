@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {Carousel, Icon, Dropdown, Menu} from 'antd';
 import './App.less';
 
 const imageUrl = (title) => {
@@ -7,8 +8,23 @@ const imageUrl = (title) => {
 };
 
 const Header = ({logoUrl, items}) => {
+  const getMenu = (children) => {
+    return (
+      <Menu className='Header-menu'>
+        {children.map((item) => <Menu.Item key={item.key}>{item.title}</Menu.Item>)}
+      </Menu>
+    );
+  };
   const renderItem = (item) => {
-    return <span key={item.key} data-role='item'>{item.title}</span>;
+    if (item.children) {
+      return (
+        <Dropdown key={item.key} overlay={getMenu(item.children)} placement='bottomCenter'>
+          <span data-role='item'>{item.title}<Icon type="down" style={{marginLeft: '3px'}} /></span>
+        </Dropdown>
+      );
+    } else {
+      return <span key={item.key} data-role='item'>{item.title}</span>;
+    }
   };
   return (
     <header className='Header'>
@@ -26,7 +42,7 @@ class App extends Component {
       logoUrl: imageUrl('cloudlink'),
       items: [
         {key: 'home', title: '首页'},
-        {key: 'production', title: '产品'},
+        {key: 'production', title: '产品', children: [{key: 'p1', title: 'ePLD系统'}, {key: 'p2', title: 'WMS系统'}]},
         {key: 'client', title: '客户案例'},
         {key: 'company', title: '公司动态'},
         {key: 'contact', title: '联系我们'},
@@ -36,14 +52,16 @@ class App extends Component {
   };
 
   banner = () => {
-    const props = {
-      src: imageUrl('banner1'),
-      style: {
-        width: '100%',
-        verticalAlign: 'top'
-      }
+    const items = (new Array(1)).fill(0).map((item, index) => `banner${index + 1}`);
+    const renderItem = (item, index) => {
+      const style = {width: '100%', verticalAlign: 'top'};
+      return <img key={index} src={imageUrl(item)} style={style} alt='banner' />;
     };
-    return <div><img {...props} alt='banner' /></div>;
+    return (
+      <Carousel autoplay>
+        {items.map(renderItem)}
+      </Carousel>
+    );
   };
 
   about = () => {
@@ -272,11 +290,12 @@ class App extends Component {
 
   componentDidMount() {
     // 对于不支持黏性布局的浏览器做兼容处理
-    const header = ReactDOM.findDOMNode(this).firstChild;
+    const root = ReactDOM.findDOMNode(this);
+    const header = root.firstChild;
     if (window.getComputedStyle(header).position === 'static') {
       header.style.position = 'relative';
-      window.onscroll = () => {
-        header.style.transform = `translateY(${document.body.scrollTop}px)`;
+      root.onscroll = () => {
+        header.style.transform = `translateY(${root.scrollTop}px)`;
       }
     }
   }
