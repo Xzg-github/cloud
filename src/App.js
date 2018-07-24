@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.less';
 
+const imageUrl = (title) => {
+  return `/imgs/${title}.png`;
+};
+
 const Header = ({logoUrl, items}) => {
   const renderItem = (item) => {
     return <span key={item.key} data-role='item'>{item.title}</span>;
@@ -18,13 +22,13 @@ const Header = ({logoUrl, items}) => {
 class App extends Component {
   header = () => {
     const props = {
-      logoUrl: '/imgs/cloudlink.png',
+      logoUrl: imageUrl('cloudlink'),
       items: [
         {key: 'home', title: '首页'},
-        {key: 'key2', title: '产品显示'},
-        {key: 'key3', title: '客户案例'},
-        {key: 'key4', title: '公司动态'},
-        {key: 'key5', title: '联系我们'},
+        {key: 'production', title: '产品'},
+        {key: 'client', title: '客户案例'},
+        {key: 'company', title: '公司动态'},
+        {key: 'contact', title: '联系我们'},
       ]
     };
     return <Header {...props} />;
@@ -32,9 +36,10 @@ class App extends Component {
 
   banner = () => {
     const props = {
-      src: '/imgs/banner1.png',
+      src: imageUrl('banner1'),
       style: {
-        width: '100%'
+        width: '100%',
+        verticalAlign: 'top'
       }
     };
     return <div><img {...props} alt='banner' /></div>;
@@ -42,14 +47,14 @@ class App extends Component {
 
   about = () => {
     const items = [
-      {title: '零售行业', url: '/imgs/lingshou.png'},
-      {title: '食品行业', url: '/imgs/shipin.png'},
-      {title: '家居行业', url: '/imgs/jiaju.png'},
-      {title: '医药行业', url: '/imgs/yiyao.png'},
-      {title: '服装行业', url: '/imgs/fuzhuang.png'},
-      {title: '电子行业', url: '/imgs/dianzi.png'},
-      {title: '供应链3PL', url: '/imgs/gongyinglian.png'},
-      {title: '更多其他行业', url: '/imgs/more.png'},
+      {title: '零售行业', url: imageUrl('lingshou')},
+      {title: '食品行业', url: imageUrl('shipin')},
+      {title: '家居行业', url: imageUrl('jiaju')},
+      {title: '医药行业', url: imageUrl('yiyao')},
+      {title: '服装行业', url: imageUrl('fuzhuang')},
+      {title: '电子行业', url: imageUrl('dianzi')},
+      {title: '供应链3PL', url: imageUrl('gongyinglian')},
+      {title: '更多其他行业', url: imageUrl('more')},
     ];
     const renderItem = (item, index) => {
       return (
@@ -74,10 +79,10 @@ class App extends Component {
 
   business = () => {
     const items = [
-      {title: 'ePLD智能供应链平台', url: '/imgs/business_pingtai.png', content: '全链全场景、点对点供应链管控，上下游业务对接无间隙，提高供应链运营效率'},
-      {title: 'LLP领先物流服务', url: '/imgs/business_wuliufuwu.png', content: '专家级的物流管家服务，提供领先物流方案，建立优势物流资源池，优化物流采购和运作'},
-      {title: '专业级业务赋能', url: '/imgs/business_funeng.png', content: '系统应用的高阶赋能，促进业务运作与软件系统的高度融合，呈现系统的最大价值'},
-      {title: '精细化仓储管理系统', url: '/imgs/business_cangchu.png', content: '严谨的流程、精细化的库内管理，灵活强大的作业策略，完美覆盖B2B、B2C业务场景'}
+      {title: 'ePLD智能供应链平台', url: imageUrl('business_pingtai'), content: '全链全场景、点对点供应链管控，上下游业务对接无间隙，提高供应链运营效率'},
+      {title: 'LLP领先物流服务', url: imageUrl('business_wuliufuwu'), content: '专家级的物流管家服务，提供领先物流方案，建立优势物流资源池，优化物流采购和运作'},
+      {title: '专业级业务赋能', url: imageUrl('business_funeng'), content: '系统应用的高阶赋能，促进业务运作与软件系统的高度融合，呈现系统的最大价值'},
+      {title: '精细化仓储管理系统', url: imageUrl('business_cangchu'), content: '严谨的流程、精细化的库内管理，灵活强大的作业策略，完美覆盖B2B、B2C业务场景'}
     ];
     const renderItem = (item, index) => {
       return (
@@ -123,11 +128,54 @@ class App extends Component {
     );
   };
 
+  case1Hover = (title, description, items) => {
+    return (
+      <div>
+        <div>{title}</div>
+        <div>{description}</div>
+        <ul>{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
+        <div>了解详情</div>
+      </div>
+    );
+  };
+
   case1 = () => {
-    const items = [
-      {title: '综合物流行业', url: '/imgs/case1_wuliu.png', bgUrl: '/imgs/case1_bg_wuliu.png'},
-      {title: '大型零售行业', url: '/imgs/case1_lingshou.png', bgUrl: '/imgs/case1_bg_lingshou.png'},
-      {title: '食品行业', url: '/imgs/case1_shiping.png', bgUrl: '/imgs/case1_bg_shiping.png'},
+    const items = [{
+        title: '综合物流行业',
+        url: imageUrl('case1_wuliu'),
+        bgUrl: imageUrl('case1_bg_wuliu'),
+        description: '业务涵盖港口、航运管理、铁路及公路多式联运、仓储等综合物流服务',
+        children: [
+          '系统集成化',
+          '业务协同化',
+          '操作透明化',
+          '作业标准化',
+          '财务结算统一化'
+        ]
+      }, {
+        title: '大型零售行业',
+        url: imageUrl('case1_lingshou'),
+        bgUrl: imageUrl('case1_bg_lingshou'),
+        description: '随时掌握库存与订单发货情况，提供线上业务支持',
+        children: [
+          '自动接收PO，划分物流责任；',
+          '供货商能发起出货预约，检测出货预约的准确性；',
+          '能根据预约生成物流订单，能对物流订单进行拆分、计划；',
+          '能向DC发起交货预约；',
+          '能自动分派供应商、并对运输执行过程进行监控'
+        ]
+      }, {
+        title: '食品行业',
+        url: imageUrl('case1_shiping'),
+        bgUrl: imageUrl('case1_bg_shiping'),
+        description: '精细化仓库管理，自动化仓储操作',
+        children: [
+          '多层级、多货主、多策略管理，实现库存货权精确管理',
+          '批属性管理以及个性化功能，实现对效期、库龄等多维度管理',
+          '基于库存效期、渠道发货要求，实现自动管理效期并区分库存，实现不同渠道发货自动拣选库存，波次分拣策略',
+          '自动化设备集成，件分拣机、箱分拣机、DPS、流水线'
+        ]
+      },
     ];
     const renderItem = (item, index) => {
       return (
@@ -135,6 +183,7 @@ class App extends Component {
           <div><img src={item.url} alt='logo'/></div>
           <div style={{lineHeight: 0}}><i /></div>
           <div>{item.title}</div>
+          {this.case1Hover(item.title, item.description, item.children)}
         </div>
       );
     };
@@ -150,7 +199,7 @@ class App extends Component {
   };
 
   case2 = () => {
-    const items = (new Array(12)).fill(0).map((item, index) => `/imgs/case2_logo${index + 1}.png`);
+    const items = (new Array(12)).fill(0).map((item, index) => imageUrl(`case2_logo${index + 1}`));
     const renderItem = (item, index) => {
       return (
         <div key={index}>
@@ -173,7 +222,7 @@ class App extends Component {
       <footer>
         <div>
           <div>
-            <div><img src='/imgs/footer_logo.png' alt='logo'/></div>
+            <div><img src={imageUrl('footer_logo')} alt='logo'/></div>
             <div>深圳市云恋科技有限公司</div>
           </div>
           <div>
@@ -182,7 +231,7 @@ class App extends Component {
             <div>传真：+8675523807500</div>
           </div>
           <div>
-            <img src='/imgs/footer_2d_code.png' alt='2d code'/>
+            <img src={imageUrl('footer_2d_code')} alt='2d code'/>
             <div>
               <div>扫一扫关注云恋科技</div>
               <div>更多详情</div>
@@ -197,7 +246,7 @@ class App extends Component {
     return (
       <div data-role='extra'>
         <div>
-          <img src='/imgs/extra_phone.png' alt='phone'/>
+          <img src={imageUrl('extra_phone')} alt='phone'/>
           <div style={{display: 'none'}}>
             <div>联系电话：</div>
             <div>+8675583580000</div>
@@ -206,15 +255,15 @@ class App extends Component {
           </div>
         </div>
         <div>
-          <img src='/imgs/extra_2dcode.png' alt='2dcode'/>
+          <img src={imageUrl('extra_2dcode')} alt='2dcode'/>
           <div style={{display: 'none'}}>
-            <div><img src='/imgs/footer_2d_code.png' alt='2dcode'/></div>
+            <div><img src={imageUrl('footer_2d_code')} alt='2dcode'/></div>
             <div>扫一扫关注云恋科技</div>
             <div>更多详情</div>
           </div>
         </div>
         <div onClick={() => window.scrollTo(0,0)}>
-          <img src='/imgs/extra_top.png' alt='top'/>
+          <img src={imageUrl('extra_top')} alt='top'/>
         </div>
       </div>
     );
