@@ -281,7 +281,7 @@ class App extends Component {
             <div>更多详情</div>
           </div>
         </div>
-        <div onClick={() => window.scrollTo(0,0)}>
+        <div onClick={() => ReactDOM.findDOMNode(this).scrollTop = 0}>
           <img src={imageUrl('extra_top')} alt='top'/>
         </div>
       </div>

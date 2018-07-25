@@ -69,6 +69,10 @@
     color: #333;
   }
 
+  > :not(:last-child) {
+    min-width: @max-width;
+  }
+
   > .ant-carousel {
     .slick-dots {
       bottom: 30px;
@@ -386,7 +390,7 @@
 
   > [data-role='extra'] {
     position: fixed;
-    right: 10px;
+    right: 27px;
     bottom: 80px;
 
     > div {
@@ -437,7 +441,8 @@
       }
 
       &:last-child:hover {
-        padding-top: 4px;
+        padding-top: 2px;
+        line-height: 18px;
 
         &::before {
           display: block;
