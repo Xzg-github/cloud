@@ -1,39 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Carousel, Icon, Dropdown, Menu} from 'antd';
+import {Carousel} from 'antd';
+import Header from './components/Header';
 import './App.less';
 
 const imageUrl = (title) => {
   return `/imgs/${title}.png`;
-};
-
-const Header = ({logoUrl, items}) => {
-  const getMenu = (children) => {
-    return (
-      <Menu className='Header-menu'>
-        {children.map((item) => <Menu.Item key={item.key}>{item.title}</Menu.Item>)}
-      </Menu>
-    );
-  };
-  const renderItem = (item) => {
-    if (item.children) {
-      return (
-        <Dropdown key={item.key} overlay={getMenu(item.children)} placement='bottomCenter'>
-          <span data-role='item'>{item.title}<Icon type="down" style={{marginLeft: '3px'}} /></span>
-        </Dropdown>
-      );
-    } else {
-      return <span key={item.key} data-role='item'>{item.title}</span>;
-    }
-  };
-  return (
-    <header className='Header'>
-      <div>
-        <img src={logoUrl} alt='logo'/>
-        <span>{items.map(renderItem)}</span>
-      </div>
-    </header>
-  );
 };
 
 class App extends Component {

@@ -1,0 +1,56 @@
+@import '../variables';
+
+.Header-menu {
+  font-family: 'Microsoft YaHei', sans-serif !important;
+  padding: 16px 0;
+  margin-top: -5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  color: #333;
+
+  > .ant-dropdown-menu-item {
+    padding: 3px 37px;
+
+    &:hover {
+      background-color: transparent !important;
+      color: #00A4FF;
+    }
+  }
+}
+
+.Header {
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  color: #333;
+
+  > div {
+    width: @max-width;
+    margin: 0 auto;
+
+    > img {
+      padding: 15px 0;
+    }
+
+    > span {
+      float: right;
+
+      > [data-role='item'] {
+        display: inline-block;
+        cursor: pointer;
+        line-height: 58px;
+        height: 60px;
+        margin: 0 15px;
+
+        &:hover,
+        &.Header-item-hover {
+          color: #00A4FF;
+          border-bottom: 2px solid #00A4FF;
+        }
+      }
+    }
+  }
+}
