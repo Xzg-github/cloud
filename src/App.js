@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Carousel} from 'antd';
 import Header from './components/Header';
+import Block from './components/Block';
 import './App.less';
 
 const imageUrl = (title) => {
@@ -56,15 +57,11 @@ class App extends Component {
       );
     };
     return (
-      <div data-role='about'>
-        <div>
-          <h1>关于我们</h1>
-          <p>深圳市云恋科技有限公司是基于IT供应链平台的供应链综合服务商，核心产品为ePLD智能供应链平台。近15年的经验积累，为全球超过5000家涉及零售、食品、家居、医药、服装、电子以及供应链3PL等不同行业的客户，提供高效稳定并能创造价值的解决方案。</p>
-          <p>云恋ePLD智能供应链平台是云恋科技基于多年行业经验打造的综合供应链信息管理平台，可供货主、物流公司、承运商、司机等多方协同使用，适用于商流订单管理、综合物流订单管理、配送、货代、跨境电商、内贸海运等多个供应链场景。</p>
-          <p>云恋致力于对供应链的不断优化和革命，使合作伙伴不断获得更多的价值体现。</p>
-          <div>{items.map(renderItem)}</div>
-        </div>
-      </div>
+      <Block data-role='about' title='关于我们' items={items} renderItem={renderItem}>
+        <p>深圳市云恋科技有限公司是基于IT供应链平台的供应链综合服务商，核心产品为ePLD智能供应链平台。近15年的经验积累，为全球超过5000家涉及零售、食品、家居、医药、服装、电子以及供应链3PL等不同行业的客户，提供高效稳定并能创造价值的解决方案。</p>
+        <p>云恋ePLD智能供应链平台是云恋科技基于多年行业经验打造的综合供应链信息管理平台，可供货主、物流公司、承运商、司机等多方协同使用，适用于商流订单管理、综合物流订单管理、配送、货代、跨境电商、内贸海运等多个供应链场景。</p>
+        <p>云恋致力于对供应链的不断优化和革命，使合作伙伴不断获得更多的价值体现。</p>
+      </Block>
     );
   };
 
@@ -85,14 +82,7 @@ class App extends Component {
         </div>
       );
     };
-    return (
-      <div data-role='business'>
-        <div>
-          <h1>业务模块</h1>
-          <div>{items.map(renderItem)}</div>
-        </div>
-      </div>
-    );
+    return <Block data-role='business' title='业务模块' items={items} renderItem={renderItem} bkUrl={imageUrl('bg_business')}/>;
   };
 
   advantage = () => {
@@ -109,14 +99,7 @@ class App extends Component {
         </div>
       );
     };
-    return (
-      <div data-role='advantage'>
-        <div>
-          <h1>我们的优势</h1>
-          <div>{items.map(renderItem)}</div>
-        </div>
-      </div>
-    );
+    return <Block data-role='advantage' title='我们的优势' items={items} renderItem={renderItem} bkUrl={imageUrl('bg_advantage')} />;
   };
 
   case1Hover = (title, description, items) => {
@@ -179,13 +162,9 @@ class App extends Component {
       );
     };
     return (
-      <div data-role='case1'>
-        <div>
-          <h1>精选行业案例</h1>
-          <h2>为众多行业、领域提供基于IT供应链平台的供应链综合服务</h2>
-          <div>{items.map(renderItem)}</div>
-        </div>
-      </div>
+      <Block data-role='case1' title='精选行业案例' items={items} renderItem={renderItem}>
+        <h2>为众多行业、领域提供基于IT供应链平台的供应链综合服务</h2>
+      </Block>
     );
   };
 
@@ -198,14 +177,7 @@ class App extends Component {
         </div>
       );
     };
-    return (
-      <div data-role='case2'>
-        <div>
-          <h1>更多成功案例</h1>
-          <div>{items.map(renderItem)}</div>
-        </div>
-      </div>
-    );
+    return <Block data-role='case2' title='更多成功案例' items={items} renderItem={renderItem} bkUrl={imageUrl('bg_case2')} />;
   };
 
   footer = () => {
