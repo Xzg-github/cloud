@@ -8,11 +8,19 @@
   color: #333;
 
   > .ant-dropdown-menu-item {
-    padding: 3px 37px;
+    padding: 0;
+
+    > a {
+      margin: 0;
+      padding: 3px 37px;
+    }
 
     &:hover {
       background-color: transparent !important;
-      color: #00A4FF;
+
+      > a {
+        color: #00A4FF;
+      }
     }
   }
 }
@@ -27,11 +35,15 @@
   z-index: 10;
   color: #333;
 
+  a {
+    color: #333;
+  }
+
   > div {
     width: @max-width;
     margin: 0 auto;
 
-    > img {
+    > a > img {
       padding: 15px 0;
     }
 

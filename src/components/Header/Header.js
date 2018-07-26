@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router';
 import {Icon, Dropdown, Menu} from 'antd';
 import './Header.less';
 
@@ -18,7 +19,7 @@ class Header extends React.Component {
   menu = (key, children) => {
     return (
       <Menu className='Header-menu' onClick={this.onMenuClick}>
-        {children.map((item) => <Menu.Item key={item.key}>{item.title}</Menu.Item>)}
+        {children.map((item) => <Menu.Item key={item.key}><Link to={item.to}>{item.title}</Link></Menu.Item>)}
       </Menu>
     );
   };
@@ -39,7 +40,7 @@ class Header extends React.Component {
         </Dropdown>
       );
     } else {
-      return <span key={item.key} data-role='item'>{item.title}</span>;
+      return <Link key={item.key} to={item.to} data-role='item'>{item.title}</Link>;
     }
   };
 
@@ -48,7 +49,7 @@ class Header extends React.Component {
     return (
       <header className='Header'>
         <div>
-          <img src={logoUrl} alt='logo'/>
+          <Link to='/'><img src={logoUrl} alt='logo'/></Link>
           <span>{items.map(this.navItem)}</span>
         </div>
       </header>

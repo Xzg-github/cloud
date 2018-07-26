@@ -19,11 +19,18 @@ class App extends Component {
     const props = {
       logoUrl: imageUrl('cloudlink'),
       items: [
-        {key: 'home', title: '首页'},
-        {key: 'production', title: '产品', children: [{key: 'p1', title: 'ePLD系统'}, {key: 'p2', title: 'WMS系统'}]},
-        {key: 'client', title: '客户案例'},
-        {key: 'company', title: '公司动态'},
-        {key: 'contact', title: '联系我们'},
+        {key: 'home', title: '首页', to: '/'},
+        {
+          key: 'production',
+          title: '产品',
+          children: [
+            {key: 'p1', title: 'ePLD系统', to: '/production/epld'},
+            {key: 'p2', title: 'WMS系统', to: '/production/wms'}
+          ]
+        },
+        {key: 'client', title: '客户案例', to: '/client'},
+        {key: 'company', title: '公司动态', to: '/company'},
+        {key: 'contact', title: '联系我们', to: '/contact'},
       ]
     };
     return <Header {...props} />;
