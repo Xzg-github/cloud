@@ -1,6 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import page from './routes';
 import './index.less';
-import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(page, document.getElementById('root'));
