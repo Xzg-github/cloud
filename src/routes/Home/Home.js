@@ -151,7 +151,7 @@ const case2 = () => {
 };
 
 export default function Home() {
-  const bannerItems = (new Array(1)).fill(0).map((item, index) => imageUrl(`banner${index + 1}`));
+  const bannerItems = [{url: imageUrl('banner1')}];
   return (
     <App className='Home' bannerItems={bannerItems}>
       {about()}

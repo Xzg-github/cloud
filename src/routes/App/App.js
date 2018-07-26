@@ -38,8 +38,14 @@ class App extends Component {
 
   banner = () => {
     const renderItem = (item, index) => {
-      const style = {width: '100%', verticalAlign: 'top'};
-      return <img key={index} src={item} style={style} alt='banner' />;
+      const style = {backgroundImage: `url(${item.url})`, backgroundSize: '100% 100%'};
+      return (
+        <div className='banner-item' key={index}>
+          <div style={style}>
+            {item.content}
+          </div>
+        </div>
+      );
     };
     return (
       <Carousel autoplay>
