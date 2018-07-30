@@ -61,6 +61,198 @@ const analysis = () => {
   );
 };
 
+const advantage = () => {
+  const items = [
+    {
+      title: '商流订单管理，协同收货人和发货人',
+      content: [
+        '对接上游ERP的采购订单、销售订单，基于供采双方约定的出货规则配置预约规则，供货商出货预约信息与采购订单自动匹配；',
+        '界定供采双方的物流责任和现场交接时的费用，完成商流订单向物流订单的转换'
+      ]
+    },
+    {
+      title: '全品类物流订单管理，兼容综合和单一产品类型需求',
+      content: [
+        '订单类型：支持运输、仓储、报关、单证服务等全产品类型的物流订单接入',
+        '订单拆分：支持基于货量纵向订单拆分和基于业务类型的横向订单拆分'
+      ]
+    },
+    {
+      title: '供应商/司机绩效评价，聪明派单选择',
+      content: ['多维度的供应商/司机评价指标；基于静态（资质）和动态（业务）数据进行供应商/司机的绩效评价，为派单提供支持'],
+    },
+    {
+      title: '多层级费用处理，让利润更加精准',
+      content: [
+        '基本费用：计费引擎根据报价和计费规则自动计费',
+        '实报实销费用：供应商端或APP申请，结算人员审核确认',
+        '费用改单：费用'
+      ]
+    },
+    {
+      title: '可视化的执行过程、主动的异常管理',
+      content: [
+        '基于客户需求的跟踪节点配置和信息采集',
+        '基于采购订单、销售订单、物流订单、执行任务单的跟踪和查询',
+        '支持按照异常执行条'
+      ]
+    },
+    {
+      title: '消息管理',
+      content: ['消息产生节点、推送人员、推送方式可自主配置']
+    },
+    {
+      title: 'TCP运力平台，协同运输实体',
+      content: [
+      '改善运输执行，管理多层级运单流转',
+      '运输协同管理，货物对上下游同步在途可视化',
+      '降低成本，增加核心竞争力，获取更多订单'
+      ]
+    },
+    {
+      title: 'APP/GIS跟踪，可视化运输过程',
+      content: [
+        '支持国内主流GPS：G7/畅行、易流',
+        '根据基础档案收发货人经纬度半径形成电子围栏',
+        '运输节点APP采集反馈',
+        '执行信息监控',
+        '根据定位信息锁定操作环节'
+      ]
+    },
+  ].map((item, index) => Object.assign({}, item, {url: imageUrl(`advantage${index + 1}`), hoverUrl: imageUrl(`advantage${index + 1}_hover`)}));
+  const renderItem = (item, index) => {
+    return (
+      <div key={index}>
+        <div>
+          <img src={item.url} alt='logo' />
+          <img src={item.hoverUrl} alt='logo'/>
+        </div>
+        <div>{item.title}</div>
+        <div>
+          <div><i /></div>
+          <ul>{item.content.map((item, index) => <li key={index}>{item}</li>)}</ul>
+        </div>
+      </div>
+    );
+  };
+  return <Block data-role='advantage' title='产品优势' items={items} renderItem={renderItem} />;
+};
+
+const architecture = () => {
+  return (
+    <Block data-role='architecture' title='ePLD产品功能架构'>
+      <div>
+        <img src={imageUrl('architecture')} alt='epld architecture' />
+      </div>
+    </Block>
+  );
+};
+
+class SolutionTab extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {activeKey: props.activeKey};
+  }
+
+  onTabChange = (activeKey) => {
+    this.setState({activeKey});
+  };
+
+  genTab = (tab) => {
+    const active = tab.key === this.state.activeKey ? true : null;
+    return (
+      <div key={tab.key} data-active={active} onClick={this.onTabChange.bind(null, tab.key)}>
+        <div><img src={tab.iconUrl} alt='icon' /></div>
+        <div><span>{tab.title}</span></div>
+      </div>
+    );
+  };
+
+  content = (tabs) => {
+    const tab = tabs.find(tab => tab.key === this.state.activeKey);
+    return (
+      <div>
+        <div>
+          <img src={tab.contentUrl} alt='flow' />
+        </div>
+        <div>
+          <h1>{tab.h1}</h1>
+          <p>{tab.p}</p>
+          <h2>{tab.h2}</h2>
+          <ul>{tab.ul.map((item, index) => <li key={index}>{item}</li>)}</ul>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const {tabs} = this.props;
+    return (
+      <div className='Solution-tab'>
+        <div>{tabs.map(this.genTab)}</div>
+        {this.content(tabs)}
+      </div>
+    );
+  }
+}
+
+const solution = () => {
+  const genTab = (item, index) => {
+    return Object.assign({}, item, {
+      key: `${index + 1}`,
+      iconUrl: imageUrl(`solution${index + 1}`),
+      contentUrl: imageUrl(`solution${index + 1}_content`)
+    });
+  };
+  const tabs = [
+    {
+      title: '商流订单',
+      h1: 'ePLD基于商流订单的解决方案',
+      p: '承接商流订单，完成商流订单到物流订单的转化，物流订单向执行单的转化和执行',
+      h2: '核心价值',
+      ul: ['基于采购订单、销售订单的全流程跟踪、监控', '线上预约、协同发货人、收货人', '丰富的KPI指标体系,收货人、发货人']
+    },
+    {
+      title: '货主类',
+      h1: 'ePLD面向货主的解决方案',
+      p: '支持货主向单一承运商派单，以及综合业务拆单、计划后派给多个物流公司，货主、物流公司、承运商可以在同一平台执行',
+      h2: '核心价值',
+      ul: ['支持货主、物流公司、承运商协同：货主、物流公司、承运商在一套系统内协同运作，执行数据实时共享',
+        '多维度供应商考核体系：物流费用、份额占比，绩效等多维度的供应商考核体系，便于货主派单时选择最合适的供应商',
+        '综合业务管理，支持不同类型：系统支持全品类、全渠道的物流业务管理，货主在一个系统可以管理所有的业务类型',
+        '订单控制塔：支持以物流订单为唯一标识追踪、结算、查看异常'
+      ]
+    },
+    {
+      title: '物流公司',
+      h1: 'ePLD面向物流公司的解决方案',
+      p: '支持物流公司向单一承运商派单，以及综合业务拆单、计划后派给多个物流公司，货主、物流公司、承运商可以在同一平台执行',
+      h2: '核心价值',
+      ul: [
+        '异常管理，主动异常预警，及时发现并处理问题',
+        '协同货主、下游物流公司、不需要单独客户、供应商门户',
+        '货量拆分、业务类型'
+      ]
+    },
+    {
+      title: '承运商',
+      h1: 'ePLD面向承运商的解决方案',
+      p: '支持承运商接单、计划、派单给司机，并且通过GIS、APP、后台人工多种方式跟踪执行过程',
+      h2: '核心价值',
+      ul: [
+        '订单拆分、计划，最大化优化承运商成本',
+        '运输节点自定义，按照客户/自身需求定义节点',
+        'APP、GIS、后台人工多种方式'
+      ]
+    },
+  ].map(genTab);
+  return (
+    <Block data-role='solution' title='解决方案'>
+      <SolutionTab activeKey='1' tabs={tabs} />
+    </Block>
+  );
+};
+
 export default function ProductionEPLD() {
   const bannerItems = [
     {url: imageUrl('banner1'), content: banner1Content()}
@@ -69,6 +261,9 @@ export default function ProductionEPLD() {
     <App className='ProductionEPLD' bannerItems={bannerItems}>
       {tongdian()}
       {analysis()}
+      {advantage()}
+      {architecture()}
+      {solution()}
     </App>
   );
 };

@@ -15,7 +15,7 @@ const Block = ({title, items, renderItem, bkUrl, children, style, ...props}) => 
       <div>
         <h1>{title}</h1>
         {children}
-        <div className='Block-list'>{items.map(renderItem)}</div>
+        {items ? <div className='Block-list'>{items.map(renderItem)}</div> : null}
       </div>
     </div>
   );
