@@ -1,0 +1,168 @@
+@import '../../components/variables';
+
+.Case {
+  background-color: #FBFBFB;
+
+  .banner-item > div {
+    height: 220px !important;
+  }
+
+  [data-role='banner1'] {
+    text-align: center;
+
+    > :first-child {
+      padding-top: 67px;
+      font-size: 36px;
+    }
+
+    > :last-child {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  }
+
+  .Case-index {
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    .Case-card {
+      margin: 20px auto;
+      width: @max-width;
+      height: 252px;
+      padding: 40px 43px 0 40px;
+      background-color: white;
+      cursor: pointer;
+
+      > * {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      > :last-child {
+        width: 807px;
+        margin-left: 30px;
+
+        > :first-child {
+          font-size: 24px;
+        }
+
+        > :nth-child(2) {
+          margin-top: 19px;
+        }
+
+        > :nth-child(4) {
+          color: #666;
+          line-height: 24px;
+          margin-top: 10px;
+        }
+
+        > :last-child {
+          color: #666;
+          margin-top: 10px;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+        > :last-child > :last-child {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+
+  .Case-client {
+    margin: 20px auto 40px;
+    width: @max-width;
+
+    .ant-breadcrumb a {
+      color: #666;
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+
+    > :last-child {
+      background-color: white;
+      margin-top: 20px;
+      padding: 40px 40px 61px;
+    }
+
+    [data-role='header'] {
+      > * {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      > :last-child {
+        width: 807px;
+        margin-left: 30px;
+
+        > :first-child {
+          font-size: 24px;
+        }
+
+        > :nth-child(2) {
+          margin-top: 19px;
+        }
+
+        > :nth-child(4) {
+          color: #666;
+          line-height: 24px;
+          margin-top: 10px;
+          white-space: pre-wrap;
+        }
+      }
+    }
+
+    [data-role='line'] {
+      display: block;
+      height: 1px;
+      background-color: #D9E1EB;
+      margin-top: 33px;
+      margin-bottom: 45px;
+    }
+
+    [data-role='title'] {
+      margin-top: 43px;
+      margin-bottom: 30px;
+      font-size: 24px;
+      border-left: 4px solid @primary-color;
+      line-height: 30px;
+      padding-left: 10px;
+    }
+
+    [data-role='case1-target'],
+    [data-role='case3-solution'] {
+      > div {
+        line-height: 24px;
+
+        > :first-child {
+          font-size: 16px;
+        }
+
+        > :last-child {
+          color: #666;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    [data-role='case2-demand'] {
+      > * {
+        vertical-align: top;
+      }
+
+      .List {
+        display: inline-block;
+        width: 347px;
+        margin-left: 26px;
+      }
+    }
+  }
+}

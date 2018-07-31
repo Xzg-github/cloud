@@ -3,7 +3,7 @@ import './Block.less';
 
 const getStyle = (bkUrl, style={}) => {
   if (bkUrl) {
-    return Object.assign({}, style, {backgroundImage: `url(${bkUrl})`, backgroundSize: '100% 100%'});
+    return Object.assign({}, style, {background: `url(${bkUrl}) center no-repeat`});
   } else {
     return style;
   }

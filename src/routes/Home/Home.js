@@ -1,6 +1,7 @@
 import React from 'react';
 import App from '../App/App';
 import Block from '../../components/Block';
+import List from '../../components/List';
 import './Home.less';
 
 const imageUrl = (title) => {
@@ -77,7 +78,7 @@ const case1Hover = (title, description, items) => {
     <div>
       <div>{title}</div>
       <div>{description}</div>
-      <ul>{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
+      <List items={items} />
       <div>了解详情</div>
     </div>
   );

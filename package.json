@@ -48,6 +48,7 @@
     "buildOrigin": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
-    "build": "babel-node tools/build.js"
+    "build": "babel-node tools/build.js",
+    "serve": "node build/server.js"
   }
 }

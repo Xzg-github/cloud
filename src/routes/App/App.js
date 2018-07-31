@@ -28,7 +28,7 @@ class App extends Component {
             {key: 'p2', title: 'WMS系统', to: '/production/wms'}
           ]
         },
-        {key: 'client', title: '客户案例', to: '/client'},
+        {key: 'client', title: '客户案例', to: '/case'},
         {key: 'company', title: '公司动态', to: '/company'},
         {key: 'contact', title: '联系我们', to: '/contact'},
       ]
@@ -38,7 +38,7 @@ class App extends Component {
 
   banner = () => {
     const renderItem = (item, index) => {
-      const style = {backgroundImage: `url(${item.url})`, backgroundSize: '100% 100%'};
+      const style = {background: `url(${item.url}) center`};
       return (
         <div className='banner-item' key={index}>
           <div style={style}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import App from '../App/App';
 import Block from '../../components/Block';
+import List from '../../components/List';
 import './ProductionEPLD.less';
 
 const imageUrl = (title) => {
@@ -28,7 +29,7 @@ const tongdian = () => {
     return (
       <div key={index}>
         <div>{item.title}</div>
-        <ul>{item.content.map((subItem, index) => <li key={index}>{subItem}</li>)}</ul>
+        <List items={item.content} />
       </div>
     );
   };
@@ -130,7 +131,7 @@ const advantage = () => {
         <div>{item.title}</div>
         <div>
           <div><i /></div>
-          <ul>{item.content.map((item, index) => <li key={index}>{item}</li>)}</ul>
+          <List items={item.content} />
         </div>
       </div>
     );
@@ -179,7 +180,7 @@ class SolutionTab extends React.Component {
           <h1>{tab.h1}</h1>
           <p>{tab.p}</p>
           <h2>{tab.h2}</h2>
-          <ul>{tab.ul.map((item, index) => <li key={index}>{item}</li>)}</ul>
+          <List items={tab.ul}/>
         </div>
       </div>
     );

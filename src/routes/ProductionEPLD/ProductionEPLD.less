@@ -5,26 +5,6 @@
     font-size: 30px !important;
   }
 
-  ul {
-    text-align: left;
-    list-style: none;
-    line-height: 24px;
-    margin-bottom: 0;
-    padding: 0;
-
-    > li::before {
-      display: inline-block;
-      content: '';
-      width: 4px;
-      height: 4px;
-      background-color: #666;
-      border-radius: 2px;
-      vertical-align: top;
-      margin-top: 8px;
-      margin-right: 5px;
-    }
-  }
-
   [data-role='banner1'] {
     > :first-child {
       padding-top: 88px;
@@ -123,27 +103,25 @@
 
       > :nth-child(2) {
         margin-top: 29px;
-        font-size: 16px;
+        font-size: 18px;
       }
 
       > :last-child {
         position: absolute;
-        top: 201px;
+        top: 186px;
         left: 31px;
         right: 31px;
 
-        > div > i {
-          display: inline-block;
-          width: 28px;
-          height: 2px;
-          background: linear-gradient(to right, #4857EF, #1DADF8);
-          vertical-align: top;
-          margin-bottom: 20px;
-        }
+        > div {
+          line-height: 0;
+          margin-bottom: 14px;
 
-        > ul {
-          > li::before {
-            margin-top: 10px;
+          > i {
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            background: linear-gradient(to right, #4857EF, #1DADF8);
+            vertical-align: top;
           }
         }
       }
@@ -166,10 +144,6 @@
         > :last-child {
           > div > i {
             background: white;
-          }
-
-          > ul > li::before {
-            background-color: white;
           }
         }
       }
@@ -227,6 +201,7 @@
 
       > :first-child {
         background-color: #FBFBFB;
+        padding: 20px;
       }
 
       > :last-child {
@@ -251,10 +226,6 @@
 
         > ul {
           color: #666;
-
-          > li::before {
-            margin-top: 10px;
-          }
         }
       }
     }

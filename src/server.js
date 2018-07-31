@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const routes = [
   '/production/epld',
+  '/case',
 ];
 
 // catch 404 and forward to error handler
