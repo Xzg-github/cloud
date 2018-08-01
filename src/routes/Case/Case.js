@@ -1,5 +1,6 @@
 import React from 'react';
 import {Breadcrumb} from 'antd';
+import {Link} from 'react-router';
 import App from '../App/App';
 import config from './config';
 import './Case.less';
@@ -37,11 +38,11 @@ const clientBody = (items) => {
   );
 };
 
-const Client = ({config, onClick}) => {
+const Client = ({config}) => {
   return (
     <div className='Case-client'>
       <Breadcrumb separator='>'>
-        <Breadcrumb.Item><a onClick={onClick}>客户案例</a></Breadcrumb.Item>
+        <Breadcrumb.Item><Link to='/case'>客户案例</Link></Breadcrumb.Item>
         <Breadcrumb.Item>{config.title}</Breadcrumb.Item>
       </Breadcrumb>
       <div>
@@ -53,9 +54,9 @@ const Client = ({config, onClick}) => {
   );
 };
 
-const Card = ({config, ...props}) => {
+const Card = ({config}) => {
   return (
-    <div className='Case-card' {...props}>
+    <Link className='Case-card' to={config.url}>
       <div>
         <img src={config.logo} alt='logo' />
       </div>
@@ -66,37 +67,41 @@ const Card = ({config, ...props}) => {
         <div>{config.description}</div>
         <div>了解详情></div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export default class Case extends React.Component {
-  state = {route: -1};
-
-  onClick = (route) => {
-    this.setState({route});
+  getCase = () => {
+    const to = Number(this.props.params.to) || 0;
+    if (to < 1 || to > config.items.length) {
+      return -1;
+    } else {
+      return to - 1;
+    }
   };
 
   index = (items) => {
     return (
       <div className='Case-index'>
-        {items.map((item, index) => <Card key={index} config={item} onClick={this.onClick.bind(null, index)} />)}
+        {items.map((item, index) => <Card key={index} config={item} />)}
       </div>
     );
   };
 
-  content = () => {
-    if (this.state.route < 0) {
+  content = (index) => {
+    if (index < 0) {
       return this.index(config.items);
     } else {
-      return <Client config={config.items[this.state.route]} onClick={this.onClick.bind(null, -1)} />;
+      return <Client config={config.items[index]} />;
     }
   };
 
   render() {
+    const index = this.getCase();
     return (
-      <App className='Case' bannerItems={config.bannerItems}>
-        {this.content()}
+      <App key={index} className='Case' bannerItems={config.bannerItems}>
+        {this.content(index)}
       </App>
     );
   }

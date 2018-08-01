@@ -8,7 +8,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path='/' component={Home} />
     <Route path='/production/epld' component={ProductionEPLD} />
-    <Route path='/case' component={Case} />
+    <Route path='/case(:to)' component={Case} />
     <Redirect from='*' to='/' />
   </Router>
 );

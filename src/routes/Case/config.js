@@ -164,6 +164,7 @@ export default {
   ],
   items: [
     {
+      url: '/case1',
       logo: imageUrl('logo1'),
       title: '广西北部湾国际港务集团有限公司',
       business: '综合物流管理',
@@ -173,6 +174,7 @@ export default {
       content: case1
     },
     {
+      url: '/case2',
       logo: imageUrl('logo2'),
       title: '沃尔玛',
       business: '大型零售商',
@@ -182,6 +184,7 @@ export default {
       content: case2
     },
     {
+      url: '/case3',
       logo: imageUrl('logo3'),
       title: '恒康达',
       business: '食品行业',
@@ -190,6 +193,7 @@ export default {
       content: case3
     },
     {
+      url: '/case4',
       logo: imageUrl('logo4'),
       title: '佳裕达项目',
       business: '第三方物流',
@@ -202,6 +206,7 @@ export default {
       content: []
     },
     {
+      url: '/case5',
       logo: imageUrl('logo5'),
       title: '海格物流',
       business: '综合物流行业',

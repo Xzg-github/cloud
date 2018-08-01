@@ -2,6 +2,7 @@ import React from 'react';
 import App from '../App/App';
 import Block from '../../components/Block';
 import List from '../../components/List';
+import {Link} from 'react-router';
 import './Home.less';
 
 const imageUrl = (title) => {
@@ -73,13 +74,13 @@ const advantage = () => {
   return <Block data-role='advantage' title='我们的优势' items={items} renderItem={renderItem} bkUrl={imageUrl('bg_advantage')} />;
 };
 
-const case1Hover = (title, description, items) => {
+const case1Hover = ({title, description, children, to}) => {
   return (
     <div>
       <div>{title}</div>
       <div>{description}</div>
-      <List items={items} />
-      <div>了解详情</div>
+      <List items={children} />
+      <Link to={to}>了解详情</Link>
     </div>
   );
 };
@@ -87,6 +88,7 @@ const case1Hover = (title, description, items) => {
 const case1 = () => {
   const items = [{
     title: '综合物流行业',
+    to: '/case1',
     url: imageUrl('case1_wuliu'),
     bgUrl: imageUrl('case1_bg_wuliu'),
     description: '业务涵盖港口、航运管理、铁路及公路多式联运、仓储等综合物流服务',
@@ -99,6 +101,7 @@ const case1 = () => {
     ]
   }, {
     title: '大型零售行业',
+    to: '/case2',
     url: imageUrl('case1_lingshou'),
     bgUrl: imageUrl('case1_bg_lingshou'),
     description: '随时掌握库存与订单发货情况，提供线上业务支持',
@@ -111,6 +114,7 @@ const case1 = () => {
     ]
   }, {
     title: '食品行业',
+    to: '/case3',
     url: imageUrl('case1_shiping'),
     bgUrl: imageUrl('case1_bg_shiping'),
     description: '精细化仓库管理，自动化仓储操作',
@@ -128,7 +132,7 @@ const case1 = () => {
         <div><img src={item.url} alt='logo'/></div>
         <div style={{lineHeight: 0}}><i /></div>
         <div>{item.title}</div>
-        {case1Hover(item.title, item.description, item.children)}
+        {case1Hover(item)}
       </div>
     );
   };
