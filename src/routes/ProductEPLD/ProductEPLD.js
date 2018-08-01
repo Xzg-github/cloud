@@ -2,7 +2,7 @@ import React from 'react';
 import App from '../App/App';
 import Block from '../../components/Block';
 import List from '../../components/List';
-import './ProductionEPLD.less';
+import './ProductEPLD.less';
 
 const imageUrl = (title) => {
   return `/imgs/epld/${title}.png`;
@@ -254,12 +254,12 @@ const solution = () => {
   );
 };
 
-export default function ProductionEPLD() {
+export default function ProductEPLD() {
   const bannerItems = [
     {url: imageUrl('banner1'), content: banner1Content()}
   ];
   return (
-    <App className='ProductionEPLD' bannerItems={bannerItems}>
+    <App className='ProductEPLD' bannerItems={bannerItems}>
       {tongdian()}
       {analysis()}
       {advantage()}

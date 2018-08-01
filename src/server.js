@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const routes = [
-  '/production/epld',
+  '/product/epld',
   '/case',
   '/case1',
   '/case2',

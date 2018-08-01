@@ -24,8 +24,8 @@ class App extends Component {
           key: 'production',
           title: '产品',
           children: [
-            {key: 'p1', title: 'ePLD系统', to: '/production/epld'},
-            {key: 'p2', title: 'WMS系统', to: '/production/wms'}
+            {key: 'p1', title: 'ePLD系统', to: '/product/epld'},
+            {key: 'p2', title: 'WMS系统', to: '/product/wms'}
           ]
         },
         {key: 'client', title: '客户案例', to: '/case'},
