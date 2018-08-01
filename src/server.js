@@ -26,7 +26,8 @@ app.use(function(req, res, next) {
   if (routes.includes(req.path)) {
     res.sendFile(path.join(__dirname, 'public/index.html'));
   } else {
-    next(createError(404));
+    res.redirect(302, '/');
+    //next(createError(404));
   }
 });
 
