@@ -29,7 +29,7 @@ class App extends Component {
           ]
         },
         {key: 'client', title: '客户案例', to: '/case'},
-        {key: 'company', title: '公司动态', to: '/company'},
+        //{key: 'company', title: '公司动态', to: '/company'},
         {key: 'contact', title: '联系我们', to: '/contact'},
       ]
     };

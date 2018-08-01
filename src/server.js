@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const routes = [
   '/product/epld',
+  '/product/wms',
   '/case',
   '/case1',
   '/case2',
