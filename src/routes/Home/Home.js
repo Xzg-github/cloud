@@ -76,12 +76,12 @@ const advantage = () => {
 
 const case1Hover = ({title, description, children, to}) => {
   return (
-    <div>
+    <Link to={to}>
       <div>{title}</div>
       <div>{description}</div>
       <List items={children} />
-      <Link to={to}>了解详情</Link>
-    </div>
+      <div>了解详情</div>
+    </Link>
   );
 };
 
