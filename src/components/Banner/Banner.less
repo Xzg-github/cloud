@@ -1,0 +1,14 @@
+@import '../variables';
+
+.Banner {
+  color: white;
+}
+
+@media screen and (min-width: @screen-lg-min) {
+  .Banner {
+    > div {
+      width: @screen-middle;
+      margin: 0 auto;
+    }
+  }
+}

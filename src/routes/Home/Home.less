@@ -1,6 +1,47 @@
 @import '../../components/variables';
 
 .Home {
+  > * {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  > .ant-carousel {
+    padding-left: 0;
+    padding-right: 0;
+
+    .slick-dots {
+      bottom: 30px;
+      height: 12px;
+
+      li {
+        margin: 0 5px;
+
+        button {
+          width: 12px !important;
+          height: 12px;
+          border-radius: 6px;
+        }
+      }
+    }
+
+    .banner-item {
+      vertical-align: top;
+      height: 350px;
+
+      > i {
+        display: block;
+        height: 100%;
+      }
+
+      > img {
+        display: none;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
   > [data-role='about'] {
     background:rgba(244,250,255,1);
 
@@ -13,9 +54,10 @@
 
     .Block-list {
       background-image: url(/imgs/home/bg_about.png);
+      background-size: 100% 100%;
 
       > div {
-        width: (@max-width - 2) / 4;
+        width: ~'calc(100% / 4)';
         height: 180px;
         padding-top: 40px;
 
@@ -28,14 +70,19 @@
 
   > [data-role='business'] {
     .Block-list > div {
-      width: 280px;
+      width: ~'calc((100% - 60px) / 4)';
       height: 290px;
-      background:rgba(255,255,255,1);
+      background: white;
       box-shadow: 0 8px 16px 0 rgba(100, 181, 255, 0.3);
-      padding: 40px 30px 60px 30px;
+      padding: 40px 30px 0 30px;
 
       &:not(:last-child) {
         margin-right: 20px;
+      }
+
+      > :first-child > img {
+        width: 48px;
+        height: 48px;
       }
 
       i {
@@ -68,10 +115,10 @@
     }
 
     .Block-list > div {
-      width:380px;
+      width: ~'calc((100% - 40px) / 3)';
       height:160px;
-      background-image: url(/imgs/home/advatage.png);
-      padding: 30px 84px 49px 30px;
+      background: url(/imgs/home/advantage.png) left bottom no-repeat;
+      padding: 30px 84px 0 30px;
       text-align: left;
 
       &:not(:last-child) {
@@ -93,83 +140,108 @@
 
   > [data-role='case1'] {
     .Block-list > div {
-      width: 380px;
+      width: ~'calc((100% - 40px) / 3)';
       height: 420px;
-      padding-top: 80px;
-      position: relative;
       color: white;
 
       &:not(:last-child) {
         margin-right: 20px;
       }
+    }
 
-      > :nth-child(3) {
-        font-size: 30px;
+    [data-role='case1-normal'] {
+      height: 100%;
+      padding-top: 80px;
+
+      i {
+        display: inline-block;
+        vertical-align: top;
+        width: 28px;
+        height: 2px;
+        background: white;
+        margin-top: 24px;
+        margin-bottom: 20px;
       }
 
-      > :nth-child(4) {
-        display: none;
+      > :last-child {
+        font-size: 30px;
+      }
+    }
+
+    [data-role='case1-hover'] {
+      display: none;
+      height: 100%;
+      position: relative;
+      line-height: 24px;
+      padding: 40px 30px 0;
+      text-align: left;
+      color: white;
+
+      > :first-child {
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      > :last-child {
         position: absolute;
-        line-height: 24px;
-        padding-left: 30px;
-        padding-right: 32px;
-        text-align: left;
-        top: 0;
-        bottom: 0;
+        text-align: center;
+        line-height: 34px;
         left: 0;
-        right: 0;
+        bottom: 30px;
         color: white;
+        width: 100%;
 
-        > :first-child {
-          font-size: 30px;
-          padding-top: 40px;
-          margin-bottom: 30px;
-          text-align: center;
-        }
-
-        > :last-child {
-          position: absolute;
-          text-align: center;
+        > span {
+          display: inline-block;
+          vertical-align: top;
           width: 110px;
           height: 36px;
-          line-height: 34px;
           border-radius: 4px;
           border: solid 1px white;
-          left: 135px;
-          bottom: 30px;
-          color: white;
 
           &:hover {
             background-color: white;
             color: @primary-color;
           }
         }
+      }
 
-        > .List {
-          margin-top: 1em;
+      > .List {
+        margin-top: 1em;
+      }
+    }
+
+    [data-role='case1-small'] {
+      display: none;
+      height: 100%;
+      box-shadow: 0 8px 16px rgba(100, 181, 255, 0.3);
+
+      > :first-child {
+        height: 62px;
+        line-height: 62px;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        color: white;
+
+        > img {
+          position: absolute;
+          width: 78px;
+          height: 62px;
+          left: 40px;
         }
       }
 
-      i {
-        display: inline-block;
-        width: 28px;
-        height: 2px;
-        background: rgba(255,255,255,1);
-        vertical-align: top;
-        margin-top: 24px;
-        margin-bottom: 20px;
+      > :nth-child(2) {
+        text-align: left;
+        color: #666;
+        padding: 10px 15px 0;
       }
 
-      &:hover {
-        box-shadow: 0 8px 16px 0 rgba(100, 181, 255, 0.3);
-
-        > :not(:nth-child(4)) {
-          display: none;
-        }
-
-        > :nth-child(4) {
-          display: block;
-        }
+      > :last-child {
+        padding: 5px 15px 10px;
+        color: #666;
       }
     }
   }
@@ -178,13 +250,225 @@
     padding-bottom: 40px;
 
     .Block-list > div {
-      width: 280px;
-      height: 100px;
       margin-right: 20px;
       margin-bottom: 20px;
+      width: ~'calc((100% - 60px) / 4)';
 
       &:nth-child(4n) {
         margin-right: 0;
+      }
+
+      > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-md-min) {
+  .Home {
+    > [data-role='case1'] {
+      .Block-list > div:hover {
+        box-shadow: 0 8px 16px 0 rgba(100, 181, 255, 0.3);
+
+        [data-role='case1-normal'] {
+          display: none;
+        }
+
+        [data-role='case1-hover'] {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lm-min) and (max-width: @screen-lm-max) {
+  .Home {
+    > [data-role='business'] {
+      padding-bottom: 38px;
+
+      .Block-list > div {
+        width: ~'calc((100% - 20px) / 2)';
+        height: 210px;
+        margin-bottom: 20px;
+        padding: 20px 15px 0;
+
+        &:nth-child(2n + 1) {
+          margin-right: 20px;
+        }
+
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+
+        > :nth-child(2) {
+          margin-top: 15px;
+        }
+
+        i {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    > [data-role='advantage'] {
+      .Block-list > div {
+        width: ~'calc((100% - 20px) / 3)';
+        padding: 15px;
+
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    > [data-role='case1'] {
+      .Block-list > div {
+        width: 100%;
+        height: auto;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+      }
+
+      [data-role='case1-normal'] {
+        display: none;
+      }
+
+      [data-role='case1-small'] {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+  .Home {
+    > .ant-carousel {
+      .banner-item {
+        height: auto;
+
+        > i {
+          display: none;
+        }
+
+        > img {
+          display: block;
+        }
+      }
+    }
+
+    > [data-role='about'] {
+      padding-bottom: 30px;
+
+      h1 {
+        padding-bottom: 4px;
+      }
+
+      p {
+        line-height: 22px;
+      }
+
+      .Block-list {
+        background-image: url(/imgs/home/bg_about_small.png);
+
+        > div {
+          height: 90px;
+          padding-top: 6px;
+
+          > :first-child > img {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+
+    > [data-role='business'] {
+      padding-bottom: 20px;
+
+      .Block-list > div {
+        width: 100%;
+        height: 160px;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+        padding: 15px;
+
+        > :first-child > img {
+          width: 32px;
+          height: 32px;
+        }
+
+        > :nth-child(2) {
+          margin-top: 10px;
+        }
+
+        i {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    > [data-role='advantage'] {
+      padding-bottom: 20px;
+      background: url(/imgs/home/bg_advantage_small.png) center bottom no-repeat !important;
+
+      .Block-list > div {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+        background: url(/imgs/home/advantage_small.png) left bottom no-repeat;
+
+        > :first-child {
+          font-size: 16px;
+        }
+
+        > :last-child {
+          margin-top: 4px;
+        }
+      }
+    }
+
+    > [data-role='case1'] {
+      padding-bottom: 20px;
+
+      .Block-list > div {
+        width: 100%;
+        height: auto;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+      }
+
+      [data-role='case1-normal'] {
+        display: none;
+      }
+
+      [data-role='case1-small'] {
+        display: block;
+      }
+    }
+
+    > [data-role='case2'] {
+      background: url(/imgs/home/bg_case2_small.png) left top no-repeat !important;
+      padding-bottom: 20px;
+
+      .Block-list > div {
+        margin-right: 10px !important;
+        margin-bottom: 10px;
+        width: ~'calc((100% - 20px) / 3)';
+
+        &:nth-child(3n) {
+          margin-right: 0 !important;
+        }
+
+        &[data-role='small-hide'] {
+          display: none;
+        }
       }
     }
   }

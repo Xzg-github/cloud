@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import {Carousel} from 'antd';
 import Header from '../../components/Header';
 import './App.less';
 
@@ -10,11 +8,6 @@ const imageUrl = (title) => {
 };
 
 class App extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    bannerItems: PropTypes.array
-  };
-
   header = () => {
     const props = {
       logoUrl: imageUrl('cloudlink'),
@@ -34,24 +27,6 @@ class App extends Component {
       ]
     };
     return <Header {...props} />;
-  };
-
-  banner = () => {
-    const renderItem = (item, index) => {
-      const style = {background: `url(${item.url}) center`};
-      return (
-        <div className='banner-item' key={index}>
-          <div style={style}>
-            {item.content}
-          </div>
-        </div>
-      );
-    };
-    return (
-      <Carousel autoplay>
-        {this.props.bannerItems.map(renderItem)}
-      </Carousel>
-    );
   };
 
   footer = () => {
@@ -119,11 +94,10 @@ class App extends Component {
   }
 
   render() {
-    const {className, bannerItems, children} = this.props;
+    const {className, children} = this.props;
     return (
       <div className={className ? `App ${className}` : 'App'}>
         {this.header()}
-        {bannerItems ? this.banner(bannerItems) : null}
         {children}
         {this.footer()}
         {this.extra()}

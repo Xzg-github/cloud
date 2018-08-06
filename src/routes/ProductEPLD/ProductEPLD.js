@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../App/App';
+import Banner from '../../components/Banner';
 import Block from '../../components/Block';
 import List from '../../components/List';
 import './ProductEPLD.less';
@@ -8,12 +9,12 @@ const imageUrl = (title) => {
   return `/imgs/epld/${title}.png`;
 };
 
-const banner1Content = () => {
+const banner = () => {
   return (
-    <div data-role='banner1'>
+    <Banner data-role='banner' url={imageUrl('banner')}>
       <div>ePLD云平台</div>
       <div>基于互联网和SaaS技术建立的全网互联互动、共享协同的可视化云平台；链接采购商、销售商、收货人、发货人、物流公司、承运商、司机、仓库、报关行等多方实体的上下游贯通，平行交织互动的新型物流网。</div>
-    </div>
+    </Banner>
   );
 };
 
@@ -143,7 +144,7 @@ const architecture = () => {
   return (
     <Block data-role='architecture' title='ePLD产品功能架构'>
       <div>
-        <img src={imageUrl('architecture')} alt='epld architecture' />
+        <img className='img-responsive' src={imageUrl('architecture')} alt='epld architecture' />
       </div>
     </Block>
   );
@@ -255,11 +256,9 @@ const solution = () => {
 };
 
 export default function ProductEPLD() {
-  const bannerItems = [
-    {url: imageUrl('banner1'), content: banner1Content()}
-  ];
   return (
-    <App className='ProductEPLD' bannerItems={bannerItems}>
+    <App className='ProductEPLD'>
+      {banner()}
       {tongdian()}
       {analysis()}
       {advantage()}

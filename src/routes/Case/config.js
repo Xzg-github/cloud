@@ -5,15 +5,6 @@ const imageUrl = (title) => {
   return `/imgs/case/${title}.png`;
 };
 
-const renderBanner1 = () => {
-  return (
-    <div data-role='banner1'>
-      <div>客户案例</div>
-      <div>结合各企业的发展情况，为客户提供完整的企业信息化以及物流解决方案。</div>
-    </div>
-  );
-};
-
 const renderCase1Target = ({list}) => {
   const renderItem = (item, index) => {
     return (
@@ -322,9 +313,11 @@ const case5 = [
 ];
 
 export default {
-  bannerItems: [
-    {url: imageUrl('banner1'), content: renderBanner1()}
-  ],
+  banner: {
+    url: imageUrl('banner'),
+    title: '客户案例',
+    description: '结合各企业的发展情况，为客户提供完整的企业信息化以及物流解决方案。'
+  },
   items: [
     {
       url: '/case1',

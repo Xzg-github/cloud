@@ -4,48 +4,11 @@
   max-height: 100vh;
   overflow: auto;
 
-  > :not(:last-child) {
-    min-width: @max-width;
-  }
-
-  > .ant-carousel {
-    .slick-dots {
-      bottom: 30px;
-      height: 12px;
-
-      li {
-        margin: 0 5px;
-
-        button {
-          width: 12px !important;
-          height: 12px;
-          border-radius: 6px;
-        }
-      }
-    }
-
-    .banner-item {
-      vertical-align: top;
-
-      > div {
-        height: 350px;
-
-        > * {
-          width: @max-width;
-          margin: 0 auto;
-          color: white;
-        }
-      }
-    }
-  }
-
   > footer {
     background:rgba(58,58,58,1);
 
     > div {
-      width: @max-width;
       height: 120px;
-      margin: 0 auto;
       padding: 30px 0 30px 30px;
       line-height: 24px;
 
@@ -57,6 +20,11 @@
 
       > :first-child {
         margin-right: 36px;
+
+        > :first-child > img {
+          width: 150px;
+          height: 30px;
+        }
 
         > :last-child {
           margin-top: 7px;
@@ -70,6 +38,11 @@
       > :last-child {
         float: right;
         margin-top: -10px;
+
+        > img {
+          width: 80px;
+          height: 80px;
+        }
 
         > :last-child {
           display: inline-block;
@@ -87,6 +60,8 @@
     position: fixed;
     right: 27px;
     bottom: 80px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 
     > div {
       width: 40px;
@@ -118,6 +93,11 @@
           box-shadow:0 8px 16px 0 rgba(100, 181, 255, 0.3);
           color: rgba(102, 102, 102, 1);
           cursor: default;
+
+          img {
+            width: 80px;
+            height: 80px;
+          }
         }
       }
 
@@ -151,6 +131,71 @@
           display: none;
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lg-min) {
+  .App {
+    > footer {
+      > div {
+        width: @screen-middle;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lm-max) {
+  .App {
+    > footer {
+      position: relative;
+      padding-bottom: 10px;
+
+      > div {
+        height: auto;
+        padding: 0;
+
+        > div {
+          display: block;
+
+          &:first-child {
+            font-size: 12px;
+            padding-top: 15px;
+
+            > :first-child > img {
+              width: 134px;
+              height: 27px;
+            }
+          }
+
+          &:nth-child(2) {
+            font-size: 12px;
+            margin-top: 6px;
+          }
+
+          &:last-child {
+            position: absolute;
+            margin-top: 0;
+            top: 17px;
+            right: 20px;
+
+            > img {
+              width: 50px;
+              height: 50px;
+            }
+
+            > :last-child {
+              margin-left: 8px;
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    > [data-role='extra'] {
+      right: 17px;
     }
   }
 }

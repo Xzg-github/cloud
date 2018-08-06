@@ -40,9 +40,6 @@
   }
 
   > div {
-    width: @max-width;
-    margin: 0 auto;
-
     > a > img {
       padding: 15px 0;
     }
@@ -63,6 +60,23 @@
           border-bottom: 2px solid @primary-color;
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lg-min) {
+  .Header {
+    > div {
+      width: @screen-middle;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+  .Header {
+    > div > span {
+      display: none;
     }
   }
 }

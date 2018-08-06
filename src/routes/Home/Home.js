@@ -3,10 +3,29 @@ import App from '../App/App';
 import Block from '../../components/Block';
 import List from '../../components/List';
 import {Link} from 'react-router';
+import {Carousel} from 'antd';
 import './Home.less';
 
 const imageUrl = (title) => {
   return `/imgs/home/${title}.png`;
+};
+
+const banner = () => {
+  const items = [{url: imageUrl('banner1'), small: imageUrl('banner1_small')}];
+  const renderItem = (item, index) => {
+    const style = {background: `url(${item.url}) center`};
+    return (
+      <div className='banner-item' key={index}>
+        <i style={style} />
+        <img src={item.small} alt='banner' />
+      </div>
+    );
+  };
+  return (
+    <Carousel autoplay>
+      {items.map(renderItem)}
+    </Carousel>
+  );
 };
 
 const about = () => {
@@ -18,7 +37,7 @@ const about = () => {
     {title: '服装行业', url: imageUrl('fuzhuang')},
     {title: '电子行业', url: imageUrl('dianzi')},
     {title: '供应链3PL', url: imageUrl('gongyinglian')},
-    {title: '更多其他行业', url: imageUrl('more')},
+    {title: '更多行业', url: imageUrl('more')},
   ];
   const renderItem = (item, index) => {
     return (
@@ -74,13 +93,39 @@ const advantage = () => {
   return <Block data-role='advantage' title='我们的优势' items={items} renderItem={renderItem} bkUrl={imageUrl('bg_advantage')} />;
 };
 
-const case1Hover = ({title, description, children, to}) => {
+const case1Normal = (item) => {
+  const style = {backgroundImage: `url(${item.bgUrl})`};
   return (
-    <Link to={to}>
-      <div>{title}</div>
-      <div>{description}</div>
-      <List items={children} />
-      <div>了解详情</div>
+    <div data-role='case1-normal' style={style}>
+      <div><img src={item.url} alt='logo'/></div>
+      <div style={{lineHeight: 0}}><i /></div>
+      <div>{item.title}</div>
+    </div>
+  );
+};
+
+const case1Hover = (item) => {
+  const style = {backgroundImage: `url(${item.bgUrl})`};
+  return (
+    <Link data-role='case1-hover' to={item.to} style={style}>
+      <div>{item.title}</div>
+      <div>{item.description}</div>
+      <List items={item.children} />
+      <div><span>了解详情</span></div>
+    </Link>
+  );
+};
+
+const case1Small = (item) => {
+  const style = {background: `url(${item.bgSmallUrl}) no-repeat`, backgroundSize: '100% 100%'};
+  return (
+    <Link data-role='case1-small' to={item.to}>
+      <div style={style}>
+        <img src={item.url} alt='icon'/>
+        <span>{item.title}</span>
+      </div>
+      <div>{item.description}</div>
+      <List items={item.children} />
     </Link>
   );
 };
@@ -91,6 +136,7 @@ const case1 = () => {
     to: '/case1',
     url: imageUrl('case1_wuliu'),
     bgUrl: imageUrl('case1_bg_wuliu'),
+    bgSmallUrl: imageUrl('case1_bg_small_wuliu'),
     description: '业务涵盖港口、航运管理、铁路及公路多式联运、仓储等综合物流服务',
     children: [
       '系统集成化',
@@ -104,6 +150,7 @@ const case1 = () => {
     to: '/case2',
     url: imageUrl('case1_lingshou'),
     bgUrl: imageUrl('case1_bg_lingshou'),
+    bgSmallUrl: imageUrl('case1_bg_small_lingshou'),
     description: '随时掌握库存与订单发货情况，提供线上业务支持',
     children: [
       '自动接收PO，划分物流责任；',
@@ -117,6 +164,7 @@ const case1 = () => {
     to: '/case3',
     url: imageUrl('case1_shiping'),
     bgUrl: imageUrl('case1_bg_shiping'),
+    bgSmallUrl: imageUrl('case1_bg_small_shiping'),
     description: '精细化仓库管理，自动化仓储操作',
     children: [
       '多层级、多货主、多策略管理，实现库存货权精确管理',
@@ -128,11 +176,10 @@ const case1 = () => {
   ];
   const renderItem = (item, index) => {
     return (
-      <div key={index} style={{backgroundImage: `url(${item.bgUrl})`}}>
-        <div><img src={item.url} alt='logo'/></div>
-        <div style={{lineHeight: 0}}><i /></div>
-        <div>{item.title}</div>
+      <div key={index}>
+        {case1Normal(item)}
         {case1Hover(item)}
+        {case1Small(item)}
       </div>
     );
   };
@@ -147,7 +194,7 @@ const case2 = () => {
   const items = (new Array(12)).fill(0).map((item, index) => imageUrl(`case2_logo${index + 1}`));
   const renderItem = (item, index) => {
     return (
-      <div key={index}>
+      <div key={index} data-role={index > 8 ? 'small-hide' : null}>
         <img src={item} alt='logo'/>
       </div>
     );
@@ -156,9 +203,9 @@ const case2 = () => {
 };
 
 export default function Home() {
-  const bannerItems = [{url: imageUrl('banner1')}];
   return (
-    <App className='Home' bannerItems={bannerItems}>
+    <App className='Home'>
+      {banner()}
       {about()}
       {business()}
       {advantage()}

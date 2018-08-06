@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../App/App';
+import Banner from '../../components/Banner';
 import Block from '../../components/Block';
 import List from '../../components/List';
 import './ProductWMS.less';
@@ -8,12 +9,12 @@ const imageUrl = (title) => {
   return `/imgs/wms/${title}.png`;
 };
 
-const banner1 = () => {
+const banner = () => {
   return (
-    <div data-role='banner1'>
+    <Banner data-role='banner' url={imageUrl('banner')}>
       <div>Infor WMS系统</div>
       <div>Infor WMS供应链执行套件产品，是一套操作简便的端对端物流管理解决方案软件；包括移动应用程序、语音功能、可视化，满足仓储管理、运输管理、劳动力管理和第三方物流账单管理（3PL billing）需求提供一体化的解决方案。</div>
-    </div>
+    </Banner>
   );
 };
 
@@ -22,7 +23,7 @@ const architecture = () => {
     <Block data-role='architecture' title='Infor WMS产品功能架构'>
       <h2>具有专业物流系统规划与设定，紧密结合实际物流业务与作业达成实物与账面一致的精确商品管理；用Exceed Fulfilment实现完成物流策略</h2>
       <div>
-        <img src={imageUrl('architecture')} alt='wms architecture' />
+        <img className='img-responsive' src={imageUrl('architecture')} alt='wms architecture' />
       </div>
     </Block>
   );
@@ -99,11 +100,9 @@ const feature = () => {
 };
 
 export default function ProductWMS() {
-  const bannerItems = [
-    {url: imageUrl('banner1'), content: banner1()}
-  ];
   return (
-    <App className='ProductWMS' bannerItems={bannerItems}>
+    <App className='ProductWMS'>
+      {banner()}
       {architecture()}
       {feature()}
     </App>

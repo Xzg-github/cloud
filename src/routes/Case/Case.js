@@ -2,6 +2,7 @@ import React from 'react';
 import {Breadcrumb} from 'antd';
 import {Link} from 'react-router';
 import App from '../App/App';
+import Banner from '../../components/Banner';
 import config from './config';
 import './Case.less';
 
@@ -97,10 +98,20 @@ export default class Case extends React.Component {
     }
   };
 
+  banner = (config) => {
+    return (
+      <Banner data-role='banner' url={config.url}>
+        <div>{config.title}</div>
+        <div>{config.description}</div>
+      </Banner>
+    );
+  };
+
   render() {
     const index = this.getCase();
     return (
-      <App key={index} className='Case' bannerItems={config.bannerItems}>
+      <App key={index} className='Case'>
+        {this.banner(config.banner)}
         {this.content(index)}
       </App>
     );
