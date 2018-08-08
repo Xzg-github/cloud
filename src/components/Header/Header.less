@@ -30,8 +30,10 @@
   background-color: white;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
   font-size: 16px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   color: #333;
 
@@ -39,7 +41,7 @@
     color: #333;
   }
 
-  > div {
+  > div:first-child {
     > a > img {
       padding: 15px 0;
     }
@@ -152,7 +154,7 @@
 
 @media screen and (max-width: @screen-sm-max) {
   .Header {
-    > div {
+    > div:first-child {
       > span {
         display: none;
       }

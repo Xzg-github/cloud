@@ -1,9 +1,6 @@
 @import '../../components/variables';
 
 .App {
-  max-height: 100vh;
-  overflow: auto;
-
   > footer {
     background:rgba(58,58,58,1);
 
@@ -58,7 +55,7 @@
 
   > [data-role='extra'] {
     position: fixed;
-    right: 27px;
+    right: 17px;
     bottom: 80px;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -193,9 +190,13 @@
         }
       }
     }
+  }
+}
 
+@media screen and (max-width: @screen-sm-max) {
+  .App {
     > [data-role='extra'] {
-      right: 17px;
+      display: none;
     }
   }
 }

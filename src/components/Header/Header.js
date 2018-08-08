@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {Icon, Dropdown, Menu} from 'antd';
@@ -61,7 +62,8 @@ class Header extends React.Component {
         key: item.key,
         overlay: this.menu(item.key, item.children),
         placement: 'bottomCenter',
-        onVisibleChange: (visible) => this.setState({visible: visible ? item.key : ''})
+        onVisibleChange: (visible) => this.setState({visible: visible ? item.key : ''}),
+        getPopupContainer: () => ReactDOM.findDOMNode(this)
       };
       return (
         <Dropdown {...props}>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Header from '../../components/Header';
 import './App.less';
 
@@ -74,24 +73,12 @@ class App extends Component {
             <div>更多详情</div>
           </div>
         </div>
-        <div onClick={() => ReactDOM.findDOMNode(this).scrollTop = 0}>
+        <div onClick={() => window.scrollTo(0, 0)}>
           <img src={imageUrl('extra_top')} alt='top'/>
         </div>
       </div>
     );
   };
-
-  componentDidMount() {
-    // 对于不支持黏性布局的浏览器做兼容处理
-    const root = ReactDOM.findDOMNode(this);
-    const header = root.firstChild;
-    if (window.getComputedStyle(header).position === 'static') {
-      header.style.position = 'relative';
-      root.onscroll = () => {
-        header.style.transform = `translateY(${root.scrollTop}px)`;
-      }
-    }
-  }
 
   render() {
     const {className, children} = this.props;
