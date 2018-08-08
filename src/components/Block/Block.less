@@ -1,25 +1,17 @@
 @import '../variables';
 
 .Block {
-  padding-bottom: 56px;
-
   > div {
     text-align: center;
 
     > h1 {
-      font-size: 36px;
       margin: 0;
-      padding-top: 49px;
-      padding-bottom: 31px;
       font-weight: normal;
       color: #333;
     }
 
     > h2 {
-      font-size:16px;
-      color: rgba(102,102,102,1);
-      margin-top: -27px;
-      margin-bottom: 35px;
+      color: rgba(102, 102, 102, 1);
       font-weight: normal;
     }
 
@@ -39,13 +31,43 @@
   }
 }
 
-@media screen and (max-width: @screen-sm-max) {
+@media screen and (min-width: @screen-md-min) {
   .Block {
+    padding-bottom: 56px;
+
+    > div {
+      > h1 {
+        font-size: 36px;
+        padding-top: 49px;
+        padding-bottom: 31px;
+
+        &[data-small='true'] {
+          font-size: 30px;
+        }
+      }
+
+      > h2 {
+        font-size: 16px;
+        margin-top: -27px;
+        margin-bottom: 35px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lm-max) {
+  .Block {
+    padding-bottom: 30px;
+
     > div {
       > h1 {
         font-size: 24px;
         padding-top: 22px;
         padding-bottom: 15px;
+
+        &[data-small='true'] {
+          font-size: 21px;
+        }
       }
 
       > h2 {

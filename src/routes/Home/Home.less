@@ -1,11 +1,6 @@
 @import '../../components/variables';
 
 .Home {
-  > * {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
   > .ant-carousel {
     padding-left: 0;
     padding-right: 0;
@@ -287,16 +282,16 @@
 @media screen and (min-width: @screen-lm-min) and (max-width: @screen-lm-max) {
   .Home {
     > [data-role='business'] {
-      padding-bottom: 38px;
+      padding-bottom: 20px;
 
       .Block-list > div {
-        width: ~'calc((100% - 20px) / 2)';
+        width: ~'calc((100% - 10px) / 2)';
         height: 210px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         padding: 20px 15px 0;
 
         &:nth-child(2n + 1) {
-          margin-right: 20px;
+          margin-right: 10px;
         }
 
         &:nth-child(2n) {
@@ -326,6 +321,8 @@
     }
 
     > [data-role='case1'] {
+      padding-bottom: 20px;
+
       .Block-list > div {
         width: 100%;
         height: auto;
@@ -339,6 +336,20 @@
 
       [data-role='case1-small'] {
         display: block;
+      }
+    }
+
+    > [data-role='case2'] {
+      padding-bottom: 20px;
+
+      .Block-list > div {
+        width: ~'calc((100% - 30px) / 4)';
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -361,8 +372,6 @@
     }
 
     > [data-role='about'] {
-      padding-bottom: 30px;
-
       h1 {
         padding-bottom: 4px;
       }

@@ -42,8 +42,15 @@
   }
 
   > div:first-child {
-    > a > img {
+    > a {
+      display: inline-block;
+      vertical-align: top;
       padding: 15px 0;
+
+      > img {
+        width: 150px;
+        height: 30px;
+      }
     }
 
     > span {

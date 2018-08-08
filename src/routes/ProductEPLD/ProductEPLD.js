@@ -14,6 +14,7 @@ const banner = () => {
     <Banner data-role='banner' url={imageUrl('banner')}>
       <div>ePLD云平台</div>
       <div>基于互联网和SaaS技术建立的全网互联互动、共享协同的可视化云平台；链接采购商、销售商、收货人、发货人、物流公司、承运商、司机、仓库、报关行等多方实体的上下游贯通，平行交织互动的新型物流网。</div>
+      <img src={imageUrl('banner_ball')} alt='ball' />
     </Banner>
   );
 };
@@ -35,7 +36,7 @@ const tongdian = () => {
     );
   };
   return (
-    <Block data-role='tongdian' title='物流行业痛点' items={items} renderItem={renderItem}>
+    <Block data-role='tongdian' title='物流行业痛点' items={items} renderItem={renderItem} smallTitle>
       <h2>物流行业至今大面积的存在操作以纸质单据为主的现状，造成执行信息断层，物流成本高居不下的行业痛点。 </h2>
     </Block>
   );
@@ -57,7 +58,7 @@ const analysis = () => {
     );
   };
   return (
-    <Block data-role='analysis' title='物流行业需求分析' items={items} renderItem={renderItem}>
+    <Block data-role='analysis' title='物流行业需求分析' items={items} renderItem={renderItem} smallTitle>
       <h2>随着业务的迅速增长, 迫切需要利用现代化供应链管理水平，在订单管理，物流管控及信息系统等方面全方位进行改造。 </h2>
     </Block>
   );
@@ -73,7 +74,7 @@ const advantage = () => {
       ]
     },
     {
-      title: '全品类物流订单管理，兼容综合和单一产品类型需求',
+      title: '全品类物流订单管理，兼容多类型需求',
       content: [
         '订单类型：支持运输、仓储、报关、单证服务等全产品类型的物流订单接入',
         '订单拆分：支持基于货量纵向订单拆分和基于业务类型的横向订单拆分'
@@ -137,12 +138,12 @@ const advantage = () => {
       </div>
     );
   };
-  return <Block data-role='advantage' title='产品优势' items={items} renderItem={renderItem} />;
+  return <Block data-role='advantage' title='产品优势' items={items} renderItem={renderItem} smallTitle />;
 };
 
 const architecture = () => {
   return (
-    <Block data-role='architecture' title='ePLD产品功能架构'>
+    <Block data-role='architecture' title='ePLD产品功能架构' smallTitle>
       <div>
         <img className='img-responsive' src={imageUrl('architecture')} alt='epld architecture' />
       </div>
@@ -153,35 +154,51 @@ const architecture = () => {
 class SolutionTab extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {activeKey: props.activeKey};
+    this.state = {activeKey: props.activeKey, expand: ''};
   }
 
   onTabChange = (activeKey) => {
     this.setState({activeKey});
   };
 
+  isActive = (key) => {
+    return key === this.state.activeKey ? true : null;
+  };
+
+  isExpand = (key) => {
+    return key === this.state.expand ? true : null;
+  };
+
   genTab = (tab) => {
-    const active = tab.key === this.state.activeKey ? true : null;
+    const active = this.isActive(tab.key);
+    const onClick = this.onTabChange.bind(null, tab.key);
     return (
-      <div key={tab.key} data-active={active} onClick={this.onTabChange.bind(null, tab.key)}>
+      <div key={tab.key} data-active={active} onClick={onClick}>
         <div><img src={tab.iconUrl} alt='icon' /></div>
         <div><span>{tab.title}</span></div>
       </div>
     );
   };
 
-  content = (tabs) => {
-    const tab = tabs.find(tab => tab.key === this.state.activeKey);
+  content = (tab) => {
+    const active = this.isActive(tab.key);
+    const expand = this.isExpand(tab.key);
     return (
-      <div>
-        <div>
-          <img src={tab.contentUrl} alt='flow' />
+      <div key={tab.key} data-expand={expand}>
+        <div onClick={() => this.setState({expand: this.state.expand === tab.key ? '' : tab.key})}>
+          <span>{tab.title}</span>
+          <img src={imageUrl(expand ? 'arrow_up' : 'arrow_down')} alt='arrow' />
         </div>
-        <div>
-          <h1>{tab.h1}</h1>
-          <p>{tab.p}</p>
-          <h2>{tab.h2}</h2>
-          <List items={tab.ul}/>
+        <div data-active={active}>
+          <div>
+            <img className='img-responsive' src={tab.contentUrl} alt='flow' />
+          </div>
+          <div>
+            <h1>{tab.h1}</h1>
+            <p>{tab.p}</p>
+            <h2>{tab.h2}</h2>
+            <List items={tab.ul}/>
+          </div>
         </div>
       </div>
     );
@@ -192,7 +209,7 @@ class SolutionTab extends React.Component {
     return (
       <div className='Solution-tab'>
         <div>{tabs.map(this.genTab)}</div>
-        {this.content(tabs)}
+        <div>{tabs.map(this.content)}</div>
       </div>
     );
   }
@@ -249,7 +266,7 @@ const solution = () => {
     },
   ].map(genTab);
   return (
-    <Block data-role='solution' title='解决方案'>
+    <Block data-role='solution' title='解决方案' smallTitle>
       <SolutionTab activeKey='1' tabs={tabs} />
     </Block>
   );

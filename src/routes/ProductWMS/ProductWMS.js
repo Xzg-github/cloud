@@ -20,7 +20,7 @@ const banner = () => {
 
 const architecture = () => {
   return (
-    <Block data-role='architecture' title='Infor WMS产品功能架构'>
+    <Block data-role='architecture' title='Infor WMS产品功能架构' smallTitle>
       <h2>具有专业物流系统规划与设定，紧密结合实际物流业务与作业达成实物与账面一致的精确商品管理；用Exceed Fulfilment实现完成物流策略</h2>
       <div>
         <img className='img-responsive' src={imageUrl('architecture')} alt='wms architecture' />
