@@ -191,11 +191,11 @@ const case1 = () => {
 };
 
 const case2 = () => {
-  const items = (new Array(12)).fill(0).map((item, index) => imageUrl(`case2_logo${index + 1}`));
+  const items = (new Array(8)).fill(0).map((item, index) => imageUrl(`case2_logo${index + 1}`));
   const renderItem = (item, index) => {
     return (
-      <div key={index} data-role={index > 8 ? 'small-hide' : null}>
-        <img src={item} alt='logo'/>
+      <div key={index}>
+        <img className='img-responsive' src={item} alt='logo'/>
       </div>
     );
   };
