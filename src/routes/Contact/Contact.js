@@ -59,7 +59,10 @@ const contact = () => {
     <div data-role='contact'>
       <div>
         <div>{items.map(renderItem)}</div>
-        <div><img className='img-responsive' src={imageUrl('map')} alt='map'/></div>
+        <div>
+          <img className='img-responsive' src={imageUrl('map')} alt='map'/>
+          <img className='img-responsive' src={imageUrl('map_small')} alt='map'/>
+        </div>
       </div>
     </div>
   );
