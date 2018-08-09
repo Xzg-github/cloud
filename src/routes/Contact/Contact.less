@@ -1,0 +1,81 @@
+@import '../../components/variables';
+
+.Contact {
+  .Banner {
+    > div {
+      height: 220px;
+      text-align: center;
+
+      > :first-child {
+        padding-top: 60px;
+        padding-bottom: 7px;
+        font-size: 36px;
+      }
+
+      > :last-child {
+        font-size: 16px;
+      }
+    }
+  }
+
+  > [data-role='contact'] {
+    background: #FBFBFB;
+    padding-top: 30px;
+    padding-bottom: 40px;
+
+    > div {
+      background: white;
+      padding: 44px 25px 61px;
+
+      > :first-child {
+        padding-bottom: 14px;
+
+        > div {
+          display: inline-block;
+          vertical-align: top;
+          width: ~'calc((100% - 50px) / 2)';
+          margin-bottom: 45px;
+
+          &:nth-child(2n + 1) {
+            margin-right: 50px;
+          }
+
+          > img {
+            vertical-align: top;
+          }
+
+          > :last-child {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 29px;
+            max-width: ~'calc(100% - 77px)';
+
+            > h1 {
+              font-size: 22px;
+              font-weight: normal;
+              margin-bottom: 0;
+              color: #333;
+            }
+
+            > div {
+              white-space: pre-wrap;
+              color: #666;
+              line-height: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lg-min) {
+  .Contact {
+    > [data-role='contact'] {
+      > div {
+        width: @screen-middle;
+        margin: 0 auto;
+      }
+    }
+  }
+}

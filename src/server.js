@@ -19,6 +19,7 @@ const routes = [
   '/case3',
   '/case4',
   '/case5',
+  '/contact'
 ];
 
 // catch 404 and forward to error handler
