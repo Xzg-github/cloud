@@ -343,6 +343,10 @@
 
     > [data-role='tongdian'] {
       .Block-list > div {
+        > :first-child {
+          font-size: 16px;
+        }
+
         > :last-child {
           padding: 15px;
         }
@@ -400,6 +404,11 @@
     .Solution-tab {
       > :first-child > div {
         padding: 0 30px;
+
+        > :first-child > img {
+          width: 24px;
+          height: 24px;
+        }
       }
 
       > :last-child > div > :last-child > {
@@ -425,7 +434,9 @@
       background: url("/imgs/epld/banner_small.png") center center !important;
 
       > div {
-        height: auto;
+        height: 200px;
+        display: table-cell;
+        vertical-align: middle;
 
         > :first-child {
           padding-top: 15px;
@@ -462,6 +473,7 @@
             background-size: 100% 100%;
             text-align: left;
             padding-left: 15px;
+            font-size: 16px;
           }
 
           > :last-child {
@@ -536,6 +548,7 @@
             border-bottom: none;
 
             > :first-child {
+              display: block;
               padding: 0;
             }
 
