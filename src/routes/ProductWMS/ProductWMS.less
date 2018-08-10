@@ -27,6 +27,8 @@
   }
 
   > [data-role='feature'] {
+    padding: 0;
+
     > h1 {
       font-size: 30px;
       text-align: center;
@@ -39,58 +41,183 @@
     > :nth-child(2n) {
       background-color: #F4FAFF;
     }
+  }
+}
 
-    > .ProductWMS-block2 > div {
-      width: @max-width;
-      margin: 0 auto;
-      padding-top: 61px;
-      padding-bottom: 61px;
+.ProductWMS-block2 > div {
+  > h2 {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 30px;
+    border-left: 4px solid @primary-color;
+    padding-left: 7px;
+    margin-bottom: 32px;
+  }
 
-      > h2 {
-        font-size: 24px;
-        font-weight: normal;
-        line-height: 30px;
-        border-left: 4px solid @primary-color;
-        padding-left: 7px;
-        margin-bottom: 32px;
+  > p {
+    color: #666;
+    line-height: 26px;
+    margin-top: -18px;
+    margin-bottom: 20px;
+  }
+
+  > div {
+    > * {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    > :last-child {
+      width: 309px;
+      margin-left: 20px;
+
+      > h3 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        padding-top: 15px;
       }
 
-      > p {
+      > ul {
+        font-size: 16px;
         color: #666;
         line-height: 26px;
-        margin-top: -18px;
-        margin-bottom: 20px;
+
+        > li {
+          margin-bottom: 9px;
+        }
       }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lg-min) {
+  .ProductWMS-block2 {
+    > div {
+      width: @screen-middle;
+      margin: 0 auto;
+      padding: 61px 0;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-md-max) {
+  .ProductWMS-block2 {
+    > div {
+      padding: 61px 15px;
+
+      > :last-child {
+        > :first-child {
+          display: block;
+          text-align: center;
+        }
+
+        > :last-child {
+          display: block;
+          margin-left: 0;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lm-max) {
+  .ProductWMS {
+    > [data-role='feature'] {
+      > h1 {
+        font-size: 21px;
+        padding-top: 22px;
+        margin-bottom: -20px;
+      }
+    }
+  }
+
+  .ProductWMS-block2 > div {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    > h2 {
+      font-size: 16px;
+      line-height: 18px;
+      border-left-width: 2px;
+      margin-bottom: 15px;
+    }
+
+    > p {
+      margin-top: 0;
+      margin-bottom: 15px;
+      line-height: 22px;
+    }
+
+    > :last-child > :last-child {
+      > h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      > ul {
+        font-size: 14px;
+        line-height: 22px;
+
+        > li {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: @screen-lm-min) and (max-width: @screen-lm-max) {
+  .ProductWMS {
+    > .Banner {
+      background: url(/imgs/epld/banner.png) center center !important;
 
       > div {
-        > * {
-          display: inline-block;
-          vertical-align: top;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        > :first-child {
+          padding-top: 0;
         }
 
-        > div {
-          width: 309px;
-          margin-left: 20px;
-
-          > h3 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-            padding-top: 15px;
-          }
-
-          > ul {
-            font-size: 16px;
-            color: #666;
-            line-height: 26px;
-
-            > li {
-              margin-bottom: 9px;
-            }
-          }
+        > :last-child {
+          padding-top: 5px;
+          width: auto;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+  .ProductWMS {
+    > .Banner {
+      background: url(/imgs/epld/banner_small.png) center center !important;
+
+      > div {
+        height: 200px;
+        display: table-cell;
+        vertical-align: middle;
+
+        > :first-child {
+          padding-top: 15px;
+          font-size: 24px;
+        }
+
+        > :last-child {
+          width: auto;
+          padding-top: 5px;
+          padding-bottom: 15px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    > [data-role='architecture'] > div > h2 {
+      display: none;
     }
   }
 }

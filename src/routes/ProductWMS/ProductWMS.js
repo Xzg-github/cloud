@@ -36,7 +36,9 @@ const Block2 = ({config}) => {
         <h2>{config.title}</h2>
         {config.description ? <p>{config.description}</p> : null}
         <div>
-          <img src={config.url} alt='feature' />
+          <div>
+            <img className='img-responsive' src={config.url} alt='feature' />
+          </div>
           <div>
             <h3>解决的业务痛点</h3>
             <List items={config.keyPoint} />
