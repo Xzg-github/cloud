@@ -9,7 +9,7 @@ import './Case.less';
 const clientHeader = (config) => {
   const description = config.description2 ? config.description + '\n' + config.description2 : config.description;
   return (
-    <header data-role='header'>
+    <header className='Case-card'>
       <div>
         <img src={config.logo} alt='logo' />
       </div>

@@ -18,20 +18,20 @@ const renderCase1Target = ({list}) => {
 };
 
 const renderCase1Solution = ({url}) => {
-  return <div data-role='case1-solution'><img src={url} alt='solution' /></div>;
+  return <div data-role='case1-solution'><img className='img-responsive' src={url} alt='solution' /></div>;
 };
 
 const renderCase2Demand = ({url, list}) => {
   return (
     <div data-role='case2-demand'>
-      <img src={url} alt='solution' />
+      <div><img className='img-responsive' src={url} alt='solution' /></div>
       <List items={list} />
     </div>
   );
 };
 
 const renderCase2Solution = ({url}) => {
-  return <div data-role='case2-solution'><img src={url} alt='solution' /></div>;
+  return <div data-role='case2-solution'><img className='img-responsive' src={url} alt='solution' /></div>;
 };
 
 const renderCase3Introduction = ({list}) => {
